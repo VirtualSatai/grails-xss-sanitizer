@@ -8,6 +8,7 @@ buildscript {
     }
     dependencies {
         classpath "org.grails:grails-gradle-plugin:$grailsVersion"
+        classpath "erst-build-tools:erst-release-plugin:5.47.0"
     }
 }
 
@@ -20,16 +21,20 @@ buildScan {
     licenseAgree = 'yes'
 }
 
-version "1.1.0"
-group = 'org.grails.plugins'
+version "1.2.1"
+group = 'erst-tools'
 
-apply plugin:"eclipse"
-apply plugin:"idea"
-apply plugin:"org.grails.grails-plugin"
-apply plugin:"org.grails.grails-plugin-publish"
+apply plugin: "eclipse"
+apply plugin: "idea"
+apply plugin: "org.grails.grails-plugin"
+apply plugin: "org.grails.grails-plugin-publish"
+apply plugin: 'erst-release'
+apply plugin: 'erst-jar-publication'
 
-sourceCompatibility = 1.7
-targetCompatibility = 1.7
+sourceCompatibility = 1.8
+targetCompatibility = 1.8
+
+compileJava.options.encoding = 'utf-8'
 
 ext {
     grailsVersion = project.grailsVersion
