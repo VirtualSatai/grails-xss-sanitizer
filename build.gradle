@@ -8,7 +8,8 @@ buildscript {
     }
     dependencies {
         classpath "org.grails:grails-gradle-plugin:$grailsVersion"
-        classpath "erst-build-tools:erst-release-plugin:5.47.0"
+        classpath "erst-build-tools:erst-release-plugin:5.47.0" // skal tilføjes for at release plugin virker
+
     }
 }
 
@@ -27,9 +28,9 @@ group = 'erst-tools'
 apply plugin: "eclipse"
 apply plugin: "idea"
 apply plugin: "org.grails.grails-plugin"
-apply plugin: "org.grails.grails-plugin-publish"
-apply plugin: 'erst-release'
-apply plugin: 'erst-jar-publication'
+apply from: System.getProperty("user.home") + "/.gradle/erst-publish.gradle"
+apply plugin: 'erst-release'                // Kør release plugin
+apply plugin: "org.grails.grails-doc"       // kør groovydoc/javadoc plugin
 
 sourceCompatibility = 1.8
 targetCompatibility = 1.8
@@ -72,6 +73,7 @@ dependencies {
     testCompile "org.grails:grails-testing-support"
 }
 
+/*
 grailsPublish {
     githubSlug = 'rpalcolea/grails-xss-sanitizer'
     license {
@@ -79,7 +81,8 @@ grailsPublish {
     }
     title = "Grails Xss Sanitizer"
     desc = "This plugin uses OWASP ESAPI library to sanitize request parameters. This reduces the risk of dangerous XSS request parameters possibly being rendered on the client."
-    developers = [rpalcolea:"Roberto Perez Alcolea"]
+    developers = [rpalcolea: "Roberto Perez Alcolea"]
     portalUser = ""
     portalPassword = ""
 }
+*/
